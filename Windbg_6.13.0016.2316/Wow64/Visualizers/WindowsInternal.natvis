@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+    <Type Name="CTSmartObj&lt;*&gt;">
+        <DisplayString>{_obj}</DisplayString>
+        <Expand>
+            <ExpandedItem>_obj</ExpandedItem>
+        </Expand>
+    </Type>
+    <Type Name="CTSmartPtr&lt;*&gt;">
+        <DisplayString>{_obj}</DisplayString>
+        <Expand>
+            <ExpandedItem>_obj</ExpandedItem>
+        </Expand>
+    </Type>
+    <Type Name="CTSmartPtr&lt;wchar_t,*&gt;">
+        <DisplayString>{_obj,su}</DisplayString>
+        <Expand>
+            <ExpandedItem>_obj</ExpandedItem>
+        </Expand>
+    </Type>
+    <Type Name="CPropertyStoreHelperBase&lt;*&gt;">
+        <DisplayString>{_pStore}</DisplayString>
+        <Expand>
+            <ExpandedItem>_pStore</ExpandedItem>
+        </Expand>
+    </Type>
+    <Type Name="_ITEMIDLIST">
+        <!-- uncomment this and put a comment around the below to enable the code based visualizer
+        <DisplayString LegacyAddin="ShellItemVisualizer.dll" Export="VisualizeIdList"></DisplayString>
+        -->
+        <DisplayString Condition="mkid.cb == 0">&lt;null&gt;</DisplayString>
+        <DisplayString Condition="(mkid.abID[0] == 0x1f) || (mkid.abID[0] == 0x2e)">Reg: {(CLSID*)(mkid.abID + 2)}</DisplayString>
+        <DisplayString Condition="mkid.abID[0] == 0x2f">Drive: {mkid.abID + 1,s}</DisplayString>
+        <DisplayString Condition="(mkid.abID[0] >= 0x30) &amp;&amp; (mkid.abID[0] &lt;= 0x3e)">File: {mkid.abID + 0xc,s}</DisplayString>
+        <DisplayString Condition="mkid.abID[0] == 0x77">Lib: {mkid.abID + 22,s}</DisplayString>
+        <DisplayString Condition="mkid.abID[0] == 0xc3">Net: {mkid.abID + 4,s}</DisplayString>
+        <DisplayString>{mkid.cb},{mkid.abID,s}</DisplayString>
+        <Expand>
+            <LinkedListItems Condition="mkid.cb != 0">
+                <HeadPointer>this</HeadPointer>
+                <NextPointer>mkid.cb ? (_ITEMIDLIST *)(mkid.abID + mkid.cb - 2) : nullptr</NextPointer>
+                <ValueNode>this</ValueNode>
+            </LinkedListItems>
+        </Expand>
+    </Type>
+    <Type Name="IShellItem">
+        <!-- uncomment this and put a comment around the below to enable the code based visualizer
+        <DisplayString LegacyAddin="ShellItemVisualizer.dll" Export="VisualizeIShellItem"></DisplayString>
+        -->
+    </Type>
+    <Type Name="CShellItem">
+        <DisplayString>{_pidlSelf}</DisplayString>
+        <Expand>
+            <ExpandedItem>_pidlSelf</ExpandedItem>
+        </Expand>
+    </Type>
+
+    <Type Name="CDPA_Base&lt;*,*&gt;">
+        <DisplayString>size={m_hdpa->cp} capacity={m_hdpa->cpAlloc}</DisplayString>
+        <Expand>
+            <ArrayItems>
+                <Size>m_hdpa->cp</Size>
+                <ValuePointer>($T1 **)(m_hdpa->pp)</ValuePointer>
+            </ArrayItems>
+        </Expand>
+    </Type>
+    <Type Name="_DPA">
+        <DisplayString>size={cp} capacity={cpAlloc}</DisplayString>
+    </Type>
+    <Type Name="CTSimpleFixedArray&lt;*,*&gt;">
+        <DisplayString>size={_celem}</DisplayString>
+        <Expand>
+            <ArrayItems>
+                <Size>_celem</Size>
+                <ValuePointer>_parray</ValuePointer>
+            </ArrayItems>
+        </Expand>
+    </Type>
+    <!-- CoTaskMemNativeString, LocalMemNativeString, GlobalMemNativeString -->
+    <Type Name="Windows::Internal::NativeString&lt;*&gt;">
+        <DisplayString>{_pszStringData}</DisplayString>
+        <Expand>
+            <ExpandedItem>_pszStringData</ExpandedItem>
+        </Expand>
+    </Type>
+</AutoVisualizer>

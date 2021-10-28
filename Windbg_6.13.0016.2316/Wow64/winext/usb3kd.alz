@@ -1,0 +1,8 @@
+#
+# USB3KD Plugin identifier string, traget class and exception code
+#
+PluginId	usb3kd
+DebuggeeClass	Kernel
+BugCheckCode	0x9f
+ImageName   usbhub3.sys
+#

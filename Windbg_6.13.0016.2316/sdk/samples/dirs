@@ -1,0 +1,10 @@
+!include dirs.inc
+DIRS=$(DIRS)
+
+#    madp_ext \
+#    mattachproc \
+#    mdumpstk \
+#    mformatting \
+#    mhealer \
+#    mremmon \
+#    msimplext \

@@ -1,0 +1,3 @@
+The file isnext.dll has been deprecated.  It has not been built by the Windows build lab since 2007.
+
+Copies of isnext.dll and isnext.pdb are located on \\dbg\privates\DeprecatedExtensions.

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+    <Type Name="WEX::TestExecution::TestDataArray&lt;*&gt;">
+        <DisplayString>size={m_size}</DisplayString>
+        <Expand>
+            <ArrayItems>
+                <Size>m_size</Size>
+                <ValuePointer>m_p</ValuePointer>
+            </ArrayItems>
+        </Expand>
+    </Type>
+    <Type Name="WEX::Common::NoThrowString">
+        <DisplayString>{m_psz,su}</DisplayString>
+        <Expand>
+            <ExpandedItem>m_psz</ExpandedItem>
+        </Expand>
+    </Type>
+
+</AutoVisualizer>
